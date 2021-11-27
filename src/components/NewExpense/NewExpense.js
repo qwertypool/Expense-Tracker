@@ -2,6 +2,10 @@ import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 
 const NewExpense = (props) => {
+  const [newDate, setnewDate] = useState(props.date);
+  const instantlyUpdateYear = (newYear) => {
+    setnewDate(newYear);
+  };
   const savedExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData,
@@ -12,7 +16,10 @@ const NewExpense = (props) => {
   };
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseForm={savedExpenseDataHandler} />
+      <ExpenseForm
+        instantlyUpdateYear={instantlyUpdateYear}
+        onSaveExpenseForm={savedExpenseDataHandler}
+      />
     </div>
   );
 };
